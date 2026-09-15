@@ -63,3 +63,32 @@
 # Do not hard-code any calculated result.
 
 
+startingBalance = float(input("Please enter starting balance: "))
+totalTrades = float(input("Please enter your total trades: "))
+totalWinsTrades = float(input("Please enter your total wins: "))
+totalLossesTrades = float(input("Please enter your total losses: "))
+risk =  float(input("Please enter your risk: "))
+riskToReward = float(input("Please enter your risk to reward: "))
+
+
+amountRiskPerTrade = startingBalance * risk/100
+profitFromOneWinningTrade = amountRiskPerTrade * riskToReward
+totalLosses = profitFromOneWinningTrade * totalLossesTrades
+totalGrossProfitFromWinningTrades = profitFromOneWinningTrade * totalWinsTrades
+netProfit_Loss = totalGrossProfitFromWinningTrades - totalLosses
+finalBalance = startingBalance + netProfit_Loss
+percentageRerturn = ((finalBalance - startingBalance)/startingBalance) * 100 
+
+# The program must calculate and display:
+#
+# - Amount risked per trade
+# - Profit from one winning trade
+# - Total losses
+# - Total gross profit from winning trades
+# - Net profit/loss
+# - Final account balance
+# - Percentage return
+#
+# Monetary values must be displayed to 2 decimal places.
+
+
