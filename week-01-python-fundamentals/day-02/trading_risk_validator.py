@@ -79,19 +79,55 @@
 #
 # DATA:
 # What values need to be stored?
-# risk % needs to be stored
-# daily loss, trades taken, wheather high impact news is active or not.
-# account balance
-#
+# # DATA:
+# - account balance
+# - risk percentage
+# - current daily loss percentage
+# - number of trades already taken
+# - whether high-impact news is active
+# - calculated amount at risk
+# - risk classification
+# - trade status
 #
 # STEPS:
-# How would I solve the problem manually?
-# i would get all the inputs i needed from the user and then i would work out,
-#  what amount is at risk and then define it into a risk classification and label the trade classification accordingly,
-# and then lastly i would put the trade status by checking if all rules have been followed and put trade status as either permitted or not permitted.
+# 1) Get and store all required inputs from the user:
+#    - account balance
+#    - risk percentage
+#    - current daily loss percentage
+#    - trades already taken
+#    - whether high-impact news is active
 #
+# 2) Calculate the amount of money at risk using the account balance
+#    and risk percentage.
+#
+# 3) Classify the risk percentage:
+#    - <= 0.5% = LOW RISK
+#    - > 0.5% and <= 1% = NORMAL RISK
+#    - > 1% = HIGH RISK
+#
+# 4) Store the correct risk classification.
+#
+# 5) Check whether all trade rules have been satisfied:
+#    - risk <= 1%
+#    - daily loss < 3%
+#    - trades taken < 5
+#    - no high-impact news
+#
+# 6) Set the trade status as permitted or not permitted.
+#
+# 7) Display:
+#    - amount at risk
+#    - risk classification
+#    - trade status
 #
 # EDGE CASES:
 # What boundaries are important?
 # it's important that the user gives a valid response but we are going to assume all responses are valid for this exercise.
 # its also important that we adhear to the constraints and also make sure the correct output is produced.
+# with risk percentage has to be strictly less than or equal to 0.5% to be classed as low risk. anything above like 0.51% is classes normal risk
+# with normal risk it has to be greater than 0.5% but also less than or equal to 1% so 0.99% is still normal risk
+# high risk is strictly greater than 1% so even 1.00001% would be classed as high risk
+# with the trade rules : risk has to be strictly <= 1% hence 0.99% is sill permitted but 1.00001% is not permitted
+# daily loss is strictly less than 3% so a daily loss that is 2% is permitted but daily loss of 3% is not permitted
+# trades taken has to be strictly less than 5 so 4 trades is permitted but 5 trades or 6 are not permitted trades
+# there has to be no high impact news hence the bool has to be false or else the trade will not be permitted.
