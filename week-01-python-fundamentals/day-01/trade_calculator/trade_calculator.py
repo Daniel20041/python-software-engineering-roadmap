@@ -15,7 +15,7 @@ account_balance = float(input("Enter account balance: "))
 risk_percentage = float(input("Enter risk percentage: "))
 risk_to_reward_ratio = float(input("Enter risk to reward: "))
 
-print(name,  account_balance, risk_percentage, risk_to_reward_ratio)
+# print(name,  account_balance, risk_percentage, risk_to_reward_ratio)
 #
 # 2. Use EURUSD as the trading pair.
 trading_pair = "EURUSD"
@@ -54,9 +54,9 @@ percentage_return = risk_percentage * risk_to_reward_ratio
 print("---Summary---")
 print(f"Trader name: {name}")
 print(f"Trading pair: {trading_pair}")
-print(f"Account balance: £{account_balance}")
+print(f"Account balance: £{account_balance:.2f}")
 print(f"Risk percentage: {risk_percentage} ")
-print(f"Risk to reward ratio: {risk_to_reward_ratio: .2f}")
+print(f"Risk to reward ratio: {risk_to_reward_ratio}")
 print(f"Money at risk: £{money_risk: .2f}")
 print(f"Potential profit: £{profit: .2f}")
 print(f"Balance after win: £{Balance_winningTrade: .2f}")

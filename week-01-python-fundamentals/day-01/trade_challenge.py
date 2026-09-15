@@ -62,22 +62,35 @@
 #
 # Do not hard-code any calculated result.
 
-
+## User inputs
 startingBalance = float(input("Please enter starting balance: "))
-totalTrades = float(input("Please enter your total trades: "))
-totalWinsTrades = float(input("Please enter your total wins: "))
-totalLossesTrades = float(input("Please enter your total losses: "))
+totalTrades = int(input("Please enter your total trades: "))
+totalWinsTrades = int(input("Please enter your total wins: "))
+totalLossesTrades = int(input("Please enter your total losses: "))
 risk =  float(input("Please enter your risk: "))
 riskToReward = float(input("Please enter your risk to reward: "))
 
-
+## Calculations
 amountRiskPerTrade = startingBalance * risk/100
 profitFromOneWinningTrade = amountRiskPerTrade * riskToReward
-totalLosses = profitFromOneWinningTrade * totalLossesTrades
+totalLosses = amountRiskPerTrade * totalLossesTrades
 totalGrossProfitFromWinningTrades = profitFromOneWinningTrade * totalWinsTrades
 netProfit_Loss = totalGrossProfitFromWinningTrades - totalLosses
 finalBalance = startingBalance + netProfit_Loss
 percentageRerturn = ((finalBalance - startingBalance)/startingBalance) * 100 
+
+# Output
+print(f"The amount risk per trade is: £{amountRiskPerTrade:.2f}")
+print(f"Profit from 1 winning trade is: £{profitFromOneWinningTrade:.2f}")
+print(f"The total losses is: £{totalLosses:.2f} ")
+print(f"The total gross profit from winning trades is: £{totalGrossProfitFromWinningTrades:.2f} ")
+print(f"The net profit/loss is: £{netProfit_Loss:.2f} ")
+print(f"The final account balance is: £{finalBalance:.2f} ")
+print(f"The Percentage return is: {percentageRerturn:.2f}% ")
+
+
+
+
 
 # The program must calculate and display:
 #
