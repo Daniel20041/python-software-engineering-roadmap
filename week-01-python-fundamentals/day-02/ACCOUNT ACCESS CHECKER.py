@@ -1,25 +1,25 @@
 ## Getting user information age and verification.
-user_Age = int(input("eneter your age: "))
-user_identity = input("can you verifiy your identity?, yes or no.")
+user_Age = int(input("enter your age: "))
+user_identity = input("can you verifiy your identity? yes or no: ")
 verified_user_identity = None
-valid_reponse = None
+valid_response = None
 ## verification based on user response.
 
 if user_identity == "yes" or user_identity == "Yes":
-    valid_reponse = True
+    valid_response = True
     verified_user_identity = True
 
 elif user_identity == "no" or user_identity == "No":
-    valid_reponse = True
+    valid_response = True
     verified_user_identity = False
 
 else:
-    valid_reponse = False
+    valid_response = False
 
 
-# validility & Account access status
-if valid_reponse:
-    if  user_Age >= 18 and verified_user_identity:
+# Validity & account access status
+if valid_response:
+    if user_Age >= 18 and verified_user_identity:
         print("Account access approved!")
     else:
         print("Account access denied!")
