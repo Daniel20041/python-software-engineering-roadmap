@@ -131,3 +131,66 @@
 # daily loss is strictly less than 3% so a daily loss that is 2% is permitted but daily loss of 3% is not permitted
 # trades taken has to be strictly less than 5 so 4 trades is permitted but 5 trades or 6 are not permitted trades
 # there has to be no high impact news hence the bool has to be false or else the trade will not be permitted.
+
+
+
+# 1) Get and store all required inputs from the user
+account_balance = float(input("Enter account balance: "))
+risk_percentage = float(input("Enter your risk percentage: "))
+daily_loss_percentage = float(input("Enter current daily loss: "))
+taken_trades = int(input("Enter number of trades taken today: "))
+news_response = input("Is high impact news active? Yes or No: ")
+valid_response = None
+high_impact_news = None
+
+
+# checking high impact news
+if news_response == "yes" or  news_response == "Yes":
+    valid_response = True
+    high_impact_news = True
+   # print("high impact news is true")
+elif news_response == "no" or news_response == "No":
+    valid_response = True
+    high_impact_news = False
+   # print("high impact news is false")
+else:
+    high_impact_news = None
+    valid_response = False
+
+
+
+
+if valid_response:
+
+
+    # 2) Calculate the amount of money at risk using the account balance and risk percentage.
+    amount_of_money_at_risk = account_balance * risk_percentage/100
+
+    # 3) Classify the risk percentage: - <= 0.5% = LOW RISK    - > 0.5% and <= 1% = NORMAL RISK  - > 1% = HIGH RISK
+    risk_classification = None
+
+    if risk_percentage <= 0.5:
+
+        risk_classification = "low risk"
+    elif risk_percentage > 0.5 and risk_percentage <= 1:
+        risk_classification = "Normal risk"
+    else:
+        risk_classification = "High risk"
+
+    # 5) Check whether all trade rules have been satisfied:
+    trade_status = None
+
+    if risk_percentage <= 1 and daily_loss_percentage < 3 and taken_trades < 5 and not high_impact_news:
+        trade_status = "This trade has been permitted!"
+    else:
+        trade_status = "This trade has not been permitted!"
+
+
+
+    # Display:
+
+    print(f"Amount at risk: £{amount_of_money_at_risk:.2f}")
+    print(f"Risk classification: {risk_classification}")
+    print(f"Trade status: {trade_status}")
+else:
+    print(" invalid response. Please enter Yes or No: ")
